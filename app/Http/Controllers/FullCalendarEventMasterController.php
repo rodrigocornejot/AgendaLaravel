@@ -46,5 +46,6 @@ class FullCalendarEventMasterController extends Controller
         $event = Event::where('id',$request->id)->delete();
    
         return Response::json($event);
-    }   
+    }
+
 }

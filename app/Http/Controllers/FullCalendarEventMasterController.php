@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Empleados;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Response;
@@ -19,7 +20,8 @@ class FullCalendarEventMasterController extends Controller
          $data = Event::whereDate('start', '>=', $start)->whereDate('end',   '<=', $end)->get(['id','title','start', 'end']);
          return Response::json($data);
         }
-        return view('view');
+        $datos['empleados']= Empleados::all();
+        return view('view',$datos);
     }
 
     public function create(Request $request)
